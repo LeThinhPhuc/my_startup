@@ -17,13 +17,25 @@ export default function Header() {
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
           <Navbar.Link>
-            {/* <Link to="#"> update sau khi lam xong app */}
-            Product
-            {/* </Link> */}
+            <Link to="#">
+              Product
+            </Link>
             </Navbar.Link>
-          <Navbar.Link isActive href="#">Team</Navbar.Link>
-          <Navbar.Link href="#">Blog</Navbar.Link>
-          <Navbar.Link href="#">Careers</Navbar.Link>
+          <Navbar.Link>
+            <Link to="#">
+              Team
+            </Link>
+          </Navbar.Link>
+          <Navbar.Link>
+            <Link to="#">
+              Blog
+            </Link>
+          </Navbar.Link>
+          <Navbar.Link>
+            <Link to="#">
+              Career
+            </Link>
+          </Navbar.Link>
         </Navbar.Content>
 
       </Navbar>
