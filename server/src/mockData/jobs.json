@@ -1,0 +1,18 @@
+[
+    {
+      "name": "Software Engineer",
+      "requirements": "Bachelor's degree in Computer Science, 5+ years of experience in software development",
+      "description": "We are seeking a skilled software engineer to join our team and help develop cutting-edge software solutions."
+    },
+    {
+      "name": "Data Analyst",
+      "requirements": "Bachelor's degree in Mathematics, Statistics, or Computer Science, 3+ years of experience in data analysis",
+      "description": "We are seeking a detail-oriented data analyst to join our team and help us make data-driven decisions."
+    },
+    {
+      "name": "Marketing Manager",
+      "requirements": "Bachelor's degree in Marketing or a related field, 5+ years of experience in marketing",
+      "description": "We are seeking a creative and strategic marketing manager to develop and execute marketing campaigns."
+    }
+  ]
+  
