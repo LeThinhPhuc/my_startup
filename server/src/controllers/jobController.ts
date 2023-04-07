@@ -30,7 +30,7 @@ const fetchJob = async (req: any, res: any) => {
 
     if (!isValid) {
       res.status(404).json({
-        message: 'Job is valid',
+        message: 'Job not valid',
       });
     }
 
@@ -106,7 +106,7 @@ const updateJob = async (req: any, res: any) => {
 
     if (!isValid) {
       res.status(404).json({
-        message: 'Job is valid',
+        message: 'Job not valid',
       });
     }
     const existingJob = await Job.findById(id);
@@ -135,7 +135,7 @@ const deleteJob = async (req: any, res: any) => {
     const isValid = validationMongoId(id);
     if (!isValid) {
       res.status(404).json({
-        message: 'Job is valid',
+        message: 'Job not valid',
       });
     }
 

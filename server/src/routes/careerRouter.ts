@@ -2,10 +2,10 @@ import express from 'express';
 import applyApp from "./Apply"
 import jobs from './jobs'
 const router = express.Router();
-
-//job detail
+ 
+// API JOBS ... http://localhost:8001/careers/jobs
 router.use('/jobs', jobs)
-// applications
+// API APPLICATIONS ... http://localhost:8001/careers/apply
 router.use('/apply', applyApp);
 
 export default router;
