@@ -1,10 +1,11 @@
-import jwt from 'jsonwebtoken';
+import jwt from "../helper/jwt";
 
-const SECRET_KEY = process.env.JWT_SECRET_KEY || "";
 
+// AuthMdw Login
 const authMdw = (req:any, res:any, next:any) => {
   // Step 1: get token from header
-  const token = req.headers["auth-token"];
+  const bearer = req.headers.authorization;
+  const token = bearer.split(' ')[1];
   if (!token) {
     return res.status(400).json({
       message: "Access token is required",
@@ -13,7 +14,7 @@ const authMdw = (req:any, res:any, next:any) => {
 
   //Step 2: Verify token
   try {
-    const decoded = jwt.verify(token, SECRET_KEY);
+    const decoded = jwt.verifyToken(token);
     if (decoded) {
       req.user = decoded;
       next();
@@ -25,4 +26,21 @@ const authMdw = (req:any, res:any, next:any) => {
   }
 };
 
-export default authMdw;
+// Check Role
+const adminMdw = (req:any, res:any, next:any) => {
+  const bearer = req.headers.authorization;
+  const token = bearer.split(' ')[1];
+
+  const decoded:any = jwt.verifyToken(token);
+  req.decoded = decoded;
+
+  if (decoded.role === 'admin') {
+    next();
+  } else {
+    res.json({
+      message: 'Is not admin',
+    });
+  }
+}
+
+export default { authMdw, adminMdw };

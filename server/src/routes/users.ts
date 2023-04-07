@@ -7,7 +7,7 @@ const router = express.Router();
 // router.use(authMdw);
 
 // API Get ALl User Admin
-router.get("/", authMdw, userAdminController.fetchAllUser)
+router.get("/", authMdw.authMdw, authMdw.adminMdw, userAdminController.fetchAllUser)
 
 //API Get User
 router.get("/:id", userAdminController.fetchUser);

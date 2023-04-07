@@ -1,9 +1,6 @@
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import UserAdmin from '../models/userAdmin.model';
-
-const SECRET_KEY = process.env.JWT_SECRET_KEY || "";
-const EXPIRE_IN = process.env.JWT_EXPIRE_IN || "";
+import jwt from '../helper/jwt';
 
 const loginUser = async (req:any, res:any) => {
   const { username, password } = req.body;
@@ -38,9 +35,7 @@ const loginUser = async (req:any, res:any) => {
     role: existingUser.role,
   };
 
-  const token = jwt.sign(payload, SECRET_KEY, {
-    expiresIn: EXPIRE_IN,
-  });
+  const token = jwt.signJWt(payload);
 
   // Response client
   return res.json({
