@@ -5,29 +5,14 @@ import  bcrypt from 'bcryptjs';
 const fetchAllUser = async (req: any, res: any) => {
   try {
 
-    const User:any = await UserAdmin.find();
+    const User:any = await UserAdmin.find().select('-password');
 
     if (!User) {
       res.status(404).json({
         message: 'Not Found',
       });
     }
-    // Handle Get User Delete UserModel.password;
-    // interface User {
-    //   username: string;
-    //   email: string;
-    //   password: string;
-    //   role: String;
-    //   created_at: Date;
-    // }
-
-    // const usersExceptingPassword = User.map((user: User) => {
-    //   const { password, ...restUser } = user;
-    //   return restUser;
-    // });
-
-    // console.log( { usersExceptingPassword} )
-
+    
     res.json({
       message: 'Success Get All User',
       data: User,
@@ -51,7 +36,7 @@ const fetchUser = async (req: any, res: any) => {
       });
     }
 
-    const user = await UserAdmin.findById(id);
+    const user = await UserAdmin.findById(id).select('-password');
 
     if (!user) {
       res.status(404).json({
@@ -143,6 +128,7 @@ const updateIn4User = async (req: any, res: any) => {
       password: hashedPassword,
       email,
       role,
+      
     };
 
     await UserAdmin.findByIdAndUpdate(id, user);

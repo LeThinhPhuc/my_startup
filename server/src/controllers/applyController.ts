@@ -58,37 +58,17 @@ const createApply = async (req: any, res: any) => {
   try {
     const applicationBody = req.body;
 
-    const { 
-      personal,
-      education,
-      experience,
-      profile, 
-      coverLetter, 
-      dob,
-      teamLead,
-      status,
-    } = req.body;
-
     // kiem tra mail va link job da ton tai chua
     const existingResume = await Applicant.findOne( { "profile.resumeLink": applicationBody.profile.resumeLink } );
     const existingEmail = await Applicant.findOne( { "personal.email": applicationBody.personal.email } );
     
     if (existingResume && existingEmail) {
       return res.status(400).json({
-        msg: 'Applications exists',
+        message: 'Applications exists',
       });
     }
 
-    const apply = new Applicant({
-      personal,
-      education,
-      experience,
-      profile,
-      coverLetter,
-      dob,
-      teamLead,
-      status,
-    });
+    const apply = new Applicant(req.body);
 
     await apply.save();
 

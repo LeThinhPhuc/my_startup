@@ -6,6 +6,7 @@ const authMdw = (req:any, res:any, next:any) => {
   // Step 1: get token from header
   const bearer = req.headers.authorization;
   const token = bearer.split(' ')[1];
+
   if (!token) {
     return res.status(400).json({
       message: "Access token is required",
@@ -16,7 +17,7 @@ const authMdw = (req:any, res:any, next:any) => {
   try {
     const decoded = jwt.verifyToken(token);
     if (decoded) {
-      req.user = decoded;
+      req.user = decoded
       next();
     }
   } catch (error) {
@@ -26,14 +27,9 @@ const authMdw = (req:any, res:any, next:any) => {
   }
 };
 
-// Check Role
+// Check Role Admin
 const adminMdw = (req:any, res:any, next:any) => {
-  const bearer = req.headers.authorization;
-  const token = bearer.split(' ')[1];
-
-  const decoded:any = jwt.verifyToken(token);
-  req.decoded = decoded;
-
+  const decoded = req.user 
   if (decoded.role === 'admin') {
     next();
   } else {
@@ -43,4 +39,28 @@ const adminMdw = (req:any, res:any, next:any) => {
   }
 }
 
-export default { authMdw, adminMdw };
+// Check Role employer
+const employerMdw = (req:any, res:any, next:any) => {
+  const decoded = req.user 
+  if (decoded.role === 'employer' || decoded.role === 'admin') {
+    next();
+  } else {
+    res.json({
+      message: 'Is not employer',
+    });
+  }
+}
+
+// Check Role HR
+const inditerMdw = (req:any, res:any, next:any) => {
+  const decoded = req.user 
+  if (decoded.role === 'content' || decoded.role === 'admin') {
+    next();
+  } else {
+    res.json({
+      message: 'Is not human resources',
+    });
+  }
+}
+
+export default { authMdw, adminMdw, employerMdw, inditerMdw };
