@@ -12,11 +12,15 @@ const axiosInstance = axios.create({
   },
 });
 
-axiosInstance.interceptors.response.use(res => res, error => { 
-  if (error.response.status == 403) {
-    localStorage.removeItem("accessToken");
-    window.location.href = '/login'
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.log('error', error);
+    if (error.response.status === 403) {
+      localStorage.removeItem('accessToken');
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
   }
-}) 
-
+);
 export default axiosInstance;

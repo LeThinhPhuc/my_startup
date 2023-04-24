@@ -8,7 +8,7 @@ const PrivateRoute = (props) => {
   const { isAuthenticated } = state;
 
   if (isAuthenticated) {
-    console.log('authen', isAuthenticated);
+    console.log('Check isAuthenticated', isAuthenticated);
     return <Component />;
   }
 

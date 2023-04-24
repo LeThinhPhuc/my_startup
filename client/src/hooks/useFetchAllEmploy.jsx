@@ -5,8 +5,6 @@ import EmployService from "../services/employSevice";
 
 const useFetchAllEmploy = (props) => {
   const [employee, setEmployee] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [errorCandidate, setErrorCandidate] = useState(null);
   
   useEffect(() => {
     fetchEmploy();
@@ -15,21 +13,17 @@ const useFetchAllEmploy = (props) => {
   const setEmploysData = (newContacts) => setEmployee(newContacts);
 
   const fetchEmploy = async () => {
-    setLoading(true);
 
     try {
       const employResponse = await EmployService.getAll();
       const employData = employResponse.data.data;
       setEmployee(employData);
-      setLoading(false);
     } catch (error) {
-      // console.error(error?.response.data);
-      // setErrorCandidate(error?.response.data);
-      setLoading(false);
+      console.error(error.response.data);
     }
   };
 
-  return { employee, errorCandidate , setEmploysData};
+  return { employee , setEmploysData};
 };
 
 export default useFetchAllEmploy;

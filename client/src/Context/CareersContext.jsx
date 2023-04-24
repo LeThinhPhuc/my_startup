@@ -5,14 +5,13 @@ import { dataServices } from "../services/dataService";
 import { BASE_URL, JOBS_ENDPOINT } from "../constants";
 export const CareersContext = createContext({});
 import { AuthContext } from "./AuthContext";
-import EmployService from "../services/employSevice";
 
 export const AppProvider = ({ children }) => {
   const [jobsData, setJobsData] = useState([]);
 
-  const { employee, errorCandidate , setEmploysData } = useFetchAllEmploy();
+  const { employee , setEmploysData } = useFetchAllEmploy();
 
-  const { state: { accessToken } } = useContext(AuthContext)
+  // const { state: { accessToken } } = useContext(AuthContext)
 
   useEffect(() => {
     
@@ -25,7 +24,7 @@ export const AppProvider = ({ children }) => {
   }, []);
   
   return (
-    <CareersContext.Provider value={{ jobsData, employee, errorCandidate , setEmploysData }}>
+    <CareersContext.Provider value={{ jobsData, employee, setEmploysData }}>
       {children}
     </CareersContext.Provider>
   );

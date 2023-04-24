@@ -1,6 +1,5 @@
-import { useState, useEffect, createContext, useReducer , useContext } from "react";
+import { createContext, useReducer , useContext } from "react";
 export const AuthContext = createContext();
-import axiosInstance from "../services/axiosInstance";
 import { CareersContext } from "./CareersContext";
 
 const initialState = {
@@ -20,48 +19,14 @@ const authReducer = (state, action) => {
       };
     }
 
-    case 'TOKEN_EXPIRED':
-      console.log("token taipham");
-      return {
-        ...state,
-        isAuthenticated: false,
-        accessToken: localStorage.getItem("accessToken"),
-      };
-
     default:
       return state;
   }
 };
 
 const AuthState = ({children}) => {
-
-  const { employee , errorCandidate } = useContext(CareersContext)
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  console.log("errorCandidate", errorCandidate);
-
-  
-  // const refetchToken = () => {
-
-  //     console.log('here');
-  //     delete axiosInstance.defaults.headers.common["Authorization"];
-
-  //     localStorage.removeItem("accessToken");
-
-  //     dispatch({
-  //       type: 'TOKEN_EXPIRED',
-  //     })
-
-  //     window.location.href = '/login';
-
-  //     }
-
-  // useEffect(() => {
-  //   if (errorCandidate) {
-  //     refetchToken();
-  //   }
-  // }, []);
-  
   return (
     <AuthContext.Provider
       value={{
