@@ -16,7 +16,7 @@ const loginUser = async (req:any, res:any) => {
   const existingUser:any = await UserAdmin.findOne({ username });
   if (!existingUser) {
     return res.status(400).json({
-        message: "Invalid credentials",
+        message: "Account doesn't exists",
     });
   }
 
@@ -24,14 +24,13 @@ const loginUser = async (req:any, res:any) => {
   const isMatchPassword = await bcrypt.compare(password, existingUser.password);
   if (!isMatchPassword) {
     return res.status(400).json({
-        message: "Invalid credentials",
+        message: "Incorrect username or password",
     });
   }
 
   const payload = {
     id: existingUser._id,
     username: existingUser.username,
-    email: existingUser.email,
     role: existingUser.role,
   };
 

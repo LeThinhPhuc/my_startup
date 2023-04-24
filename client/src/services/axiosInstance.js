@@ -8,8 +8,15 @@ const axiosInstance = axios.create({
     "Content-Type": "application/json",
     "Access-Control-Allow-Headers": "*",
     Accept: "application/x-www-form-urlencoded, text/plain",
-    "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`,
+    ...(localStorage.getItem("accessToken") && {"Authorization" : `Bearer ${localStorage.getItem("accessToken")}`}),
   },
 });
+
+axiosInstance.interceptors.response.use(res => res, error => { 
+  if (error.response.status == 403) {
+    localStorage.removeItem("accessToken");
+    window.location.href = '/login'
+  }
+}) 
 
 export default axiosInstance;

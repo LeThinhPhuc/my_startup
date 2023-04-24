@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 //MiddleWares
-router.use(authMdw.authMdw, authMdw.adminMdw)
+// router.use(authMdw.authMdw, authMdw.adminMdw)
 
 // API Get ALl User Admin
 router.get("/", userAdminController.fetchAllUser)

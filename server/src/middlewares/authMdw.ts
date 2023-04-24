@@ -20,8 +20,15 @@ const authMdw = (req:any, res:any, next:any) => {
       req.user = decoded
       next();
     }
-  } catch (error) {
-    res.status(401).json({
+  } catch (error:any) {
+    
+    if (error.name === 'TokenExpiredError') {
+      return res.status(403).json({
+        message: "Token Expired",
+      });
+    }
+
+    return res.status(403).json({
       message: "Invalid token, no authorization!",
     });
   }

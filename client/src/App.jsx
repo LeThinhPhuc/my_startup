@@ -7,14 +7,24 @@ import JobDetail from "./components/JobDetail";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import CareerPage from "./components/CareerPage/CareerPage";
 import AdminPage from "./pages/AdminPage";
+
+//admin
+import AuthState from "./Context/AuthContext";
+import SearchAndInforAdmin from "./pages/AdminPage/SearchAndInforAdmin";
+import Sidebar from "./pages/AdminPage/Sidebar";
+import Overview from "./pages/AdminPage/Overview/Overview";
 import CandidatesPage from "./pages/AdminPage/CandidatesPage";
+import CandidatesDetail from "./pages/AdminPage/CandidatesPage/CandidatesDetail/CandidatesDetail";
+import Jobs from "./pages/AdminPage/Jobs/Jobs";
 import JobCreatorPage from "./pages/AdminPage/JobCreatorPage/JobCreatorPage";
 import UpdateJobPage from "./pages/AdminPage/UpdateJobPage/UpdateJobPage";
+import LoginRegisterPage from "./pages/AdminPage/AdminLoginPage/LoginRegisterPage";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 function App() {
   return (
-    <AppProvider>
-      <AdminPage />
+    <>
+      {/* <AdminPage /> */}
       {/* <Router>
         <CareerHeader />
         <Routes>
@@ -26,10 +36,26 @@ function App() {
           <Route exact path="/jobs/update/:id" element={<UpdateJobPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        
         <CareerFooter />
       </Router> */}
-    </AppProvider>
+
+      <AuthState>
+        <AppProvider>
+          
+          <Router>
+            <Routes>
+
+              <Route exact path="/" element={<PrivateRoute component={Overview} />} />
+              <Route exact path="/login" element={<LoginRegisterPage />} />
+
+            </Routes>
+          </Router>
+
+        </AppProvider>
+
+      </AuthState>
+
+    </>
   );
 }
 

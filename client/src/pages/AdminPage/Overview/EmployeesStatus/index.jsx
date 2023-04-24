@@ -70,7 +70,6 @@ function EmployeesStatus({ itemsPerPage }) {
     const handleFetchJobs = async () => {
       const response = await EmployService.getAll();
       setEmployees(response.data.data);
-      console.log(response.data.data);
     };
     handleFetchJobs();
   }, []);
