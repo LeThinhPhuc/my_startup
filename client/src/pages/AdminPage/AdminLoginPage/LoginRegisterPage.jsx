@@ -26,7 +26,7 @@ const LoginRegisterPage = () => {
     try {
       const loginResponse = await userAdminService.loginAdmin(values)
       axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${loginResponse.data.accessToken}`
-      
+
       dispatch({
         type: 'LOGIN',
         payload: loginResponse?.data,

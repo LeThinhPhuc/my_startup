@@ -19,7 +19,6 @@ import Jobs from "./pages/AdminPage/Jobs/Jobs";
 import JobCreatorPage from "./pages/AdminPage/JobCreatorPage/JobCreatorPage";
 import UpdateJobPage from "./pages/AdminPage/UpdateJobPage/UpdateJobPage";
 import LoginRegisterPage from "./pages/AdminPage/AdminLoginPage/LoginRegisterPage";
-import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -45,7 +44,9 @@ function App() {
           <Router>
             <Routes>
 
-              <Route exact path="/" element={<PrivateRoute component={Overview} />} />
+              <Route exact path="/" element={<Overview />} />
+              <Route exact path="/candidates" element={<CandidatesPage />} />
+              <Route exact path="/candidates/:id/edit" element={<CandidatesDetail />} />
               <Route exact path="/login" element={<LoginRegisterPage />} />
 
             </Routes>
