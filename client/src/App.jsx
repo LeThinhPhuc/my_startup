@@ -23,7 +23,7 @@ import LoginRegisterPage from "./pages/AdminPage/AdminLoginPage/LoginRegisterPag
 function App() {
   return (
     <>
-      {/* <AdminPage /> */}
+      <AdminPage />
       {/* <Router>
         <CareerHeader />
         <Routes>
