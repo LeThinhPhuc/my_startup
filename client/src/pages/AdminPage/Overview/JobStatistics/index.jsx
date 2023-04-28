@@ -14,10 +14,10 @@ const JobStatistics = () => {
   };
   return (
     <main>
-      <section className="flex justify-between px-4 py-2 ">
-        <p className="font-semibold py-1">Job Statistics</p>
-        <div className="flex w-[300px] ">
-          <p className="text-xs py-[9px] pr-1">Filter:</p>
+      <section className="flex flex-row justify-between px-4 py-2 ">
+        <p className="flex font-semibold p-2 place-content-center place-items-center">Job Statistics</p>
+        <div className="flex min-w-[400px]">
+          <p className="text-xs py-[9px] m-1">Filter:</p>
           <Datepicker
             toggleIcon={() => (
               <svg
@@ -26,7 +26,7 @@ const JobStatistics = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5 stroke-slate-400 pb-1"
+                className="w-5 h-5 stroke-slate-400 mb-2 static"
               >
                 <path
                   strokeLinecap="round"
@@ -42,8 +42,8 @@ const JobStatistics = () => {
             useRange={false}
             value={value}
             onChange={handleValueChange}
-            inputClassName="placeholder:text-[9px] border-[1px] border-slate-300 focus:outline-0 focus:border-0 focus:transition-timing-function: cubic-bezier(0, 0, 0, 0); text-[9px]  pr-[5px] h-4 "
-            containerClassName="w-[200px] pt-1  "
+            inputClassName="placeholder:text-[9px] border-[1px] border-slate-300 focus:outline-0 focus:border-0 focus:transition-timing-function: cubic-bezier(0, 0, 0, 0) text-[9px] h-8 "
+            containerClassName="w-full pt-1"
           />
           <button
             type="button"
@@ -71,7 +71,7 @@ const JobStatistics = () => {
       <section>
         <div className="grid grid-rows-2 grid-flow-col  h-[350px] w-full px-6 py-3">
           {/* 1 */}
-          <div className="row-span-1  border-l-[1.5px] border-t-[1.5px] border-slate-300 rounded-ss-md flex items-center  pl-5 -pr-5">
+          <div className="row-span-1  border-l-[1.5px] border-t-[1.5px] border-slate-300 rounded-tl-md flex items-center  pl-5 -pr-5">
             <div className="text-sm dark:text-white">
               <div className="text-xs font-se text-gray-700 pb-2 dark:text-gray-400">
                 Total Employees
@@ -90,7 +90,7 @@ const JobStatistics = () => {
             </div>
           </div>
           {/* 2 */}
-          <div className="row-span-1 border-l-[1.5px] border-b-[1.5px] border-t-0 border-slate-300 rounded-es-md flex items-center  pl-5 -pr-5">
+          <div className="row-span-1 border-l-[1.5px] border-b-[1.5px] border-t-0 border-slate-300 rounded-bl-md flex items-center  pl-5 -pr-5">
             <div className="text-sm dark:text-white">
               <div className="text-xs font-se text-gray-700 pb-2 dark:text-gray-400">
                 Job View

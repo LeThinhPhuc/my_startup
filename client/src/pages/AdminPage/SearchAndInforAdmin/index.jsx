@@ -11,7 +11,7 @@ const SearchAndInforAdmin = () => {
 
   
   return (
-    <section className="h-[70px] flex items-center min-w-[600px] border-b-slate-300 border-b-[1px]">
+    <section className="h-[70px] flex flex-row items-center min-w-[600px] border-b-slate-300 border-b-[1px]">
       <form className="w-3/4 pl-3 ">
         <label
           htmlFor="default-search"
@@ -70,7 +70,7 @@ const SearchAndInforAdmin = () => {
         <div className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white bg-red-500  rounded-full top-2 right-2 dark:border-gray-900"></div>
       </button>
       <div className="h-8 w-0 border-r-[1.5px]"></div>
-<div className="flex justify-between items-center" >
+<div className="flex flex-row justify-between content-center items-center h-full" >
       <div className="flex items-center space-x-4 pl-5 min-w-[250px]">
         <img
           className="w-9 h-9 rounded-full object-cover"
@@ -82,20 +82,18 @@ const SearchAndInforAdmin = () => {
           <div className="text-xs text-gray-500 dark:text-gray-400">{role?role : ''}</div>
         </div>
         </div>
-        <button onClick={handleLogout}>
+        <button onClick={handleLogout} className="w-min-[250px] h-full flex flex-row px-1 hover:bg-slate-200 hover:text-red-500 items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            fill="currentColor"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            className="w-5 h-5 stroke-slate-400 mr-4"
+            className="w-8 h-7"
           >
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+              fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clipRule="evenodd"
             />
           </svg>
+          <div className="w-[70px]">Log out</div>
         </button>
       </div>
     </section>

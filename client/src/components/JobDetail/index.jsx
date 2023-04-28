@@ -37,10 +37,10 @@ function JobDetail() {
           </header>
           <div className="flex flex-col text-left  max-w-[856px] p-5 xl:p-0">
             <div className="text-[#1D273D] detail-job pt-10 xl:pt-[79px] ">
-              <h1 className="text-2xl font-medium">Descriptions</h1>
+              {/* <h1 className="text-2xl font-medium">Descriptions</h1>
               <p>
                 <br />
-              </p>
+              </p> */}
               {parse(joblist2?.content || '' )}
               {/* {joblist2?.descriptions?.map((description) => {
                 return (
@@ -59,12 +59,12 @@ function JobDetail() {
               })} */}
               {/* <p className="p-1">{joblist2?.descriptions[1].description}</p> */}
 
-              <h1 className="text-2xl font-medium mt-3">Requirements</h1>
+              {/* <h1 className="text-2xl font-medium mt-3">Requirements</h1>
               <ul className="list-disc pl-4">
                 {joblist2?.requirements.map((item) => {
                   return <li>{item}</li>;
                 })}
-              </ul>
+              </ul> */}
             </div>
             <div>
               <h1 className="text-2xl font-medium mt-3 mb-2">Benefits</h1>

@@ -23,18 +23,18 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <div className="pl-2 text-sm text-slate-500">
+        <div className="pl-1 text-sm text-slate-500">
           <p className="text-[12px] pt-2">General</p>
 
           <Link to={"/admin"}>
-            <div className=" flex py-2 cursor-grab">
+            <div className="flex py-2 cursor-pointer hover:bg-gray-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -46,14 +46,14 @@ const Sidebar = () => {
             </div>
           </Link>
           <Link to="/admin/create-job">
-            <div className=" flex py-2 cursor-grab">
+            <div className=" flex py-2 cursor-pointer hover:bg-gray-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -65,14 +65,14 @@ const Sidebar = () => {
               <p className=" pl-1">Create Job</p>
             </div>
           </Link>
-          <div className=" flex py-2 cursor-grab">
+          <div className=" flex py-2 cursor-pointer hover:bg-gray-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-4 h-4"
+              className="w-5 h-5"
             >
               <path
                 strokeLinecap="round"
@@ -85,14 +85,14 @@ const Sidebar = () => {
           </div>
           <Link to={"/admin/jobs"}>
           
-          <div className=" flex py-2 cursor-grab">
+          <div className=" flex py-2 cursor-pointer hover:bg-gray-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-4 h-4"
+              className="w-5 h-5"
             >
               <path
                 strokeLinecap="round"
@@ -106,14 +106,14 @@ const Sidebar = () => {
           </Link>
 
           <Link to={"/admin/candidates"}>
-            <div className=" flex pt-2 pb-4  cursor-grab">
+            <div className=" flex py-2 cursor-pointer hover:bg-gray-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -128,14 +128,14 @@ const Sidebar = () => {
 
           <p className="w-[180px] border-b-[1.5px]"></p>
           <p className="text-[12px] pt-2">Support</p>
-          <div className=" flex py-2 cursor-grab">
+          <div className=" flex py-2 cursor-pointer hover:bg-gray-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-4 h-4"
+              className="w-5 h-5"
             >
               <path
                 strokeLinecap="round"
@@ -151,14 +151,14 @@ const Sidebar = () => {
 
             <p className=" pl-1">Settings</p>
           </div>
-          <div className=" flex py-2 cursor-grab">
+          <div className=" flex py-2 cursor-pointer hover:bg-gray-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-4 h-4"
+              className="w-5 h-5"
             >
               <path
                 strokeLinecap="round"
