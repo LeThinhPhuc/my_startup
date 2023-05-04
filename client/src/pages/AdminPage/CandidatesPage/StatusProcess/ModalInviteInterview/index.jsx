@@ -100,7 +100,7 @@ const ModalInviteInterview = (props) => {
         </button>
         <div class="px-6 py-6 lg:px-8">
           <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-            {isJobOffer.length==6? "Send an email inviting to accept the job":"Send an interview invitation email"}
+            {isJobOffer.length==6? "Inviting candidate to accept the job":"Send an interview invitation email"}
          {" "}
           </h3>
           <form class="space-y-4" action="#" novalidate>

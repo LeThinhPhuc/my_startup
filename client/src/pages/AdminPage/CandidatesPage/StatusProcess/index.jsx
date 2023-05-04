@@ -10,18 +10,14 @@ const StatusProcess = () => {
     const year = date.getFullYear().toString();
     return `${day}/${month}/${year}`;
   }
-
+  const [isReject, setIsReject] = useState(false);
   const stepStatusInit = [
     { step: 0, createAt: new Date() },
     { step: 1, createAt: new Date() },
     { step: 2, createAt: new Date() },
     { step: 3, createAt: new Date() },
-    {step:4,
-      createAt: new Date()
-    },
-    {step:5,
-      createAt: new Date()
-    },
+    { step: 4, createAt: new Date() },
+
     // {step:6,
     //   createAt: new Date()
     // }
@@ -47,30 +43,39 @@ const StatusProcess = () => {
     setIsShowModalInviteInterview(data);
   };
   const handleBtnUndo = () => {
-    console.log(stepStatus);
+    if(isReject){
+      setIsReject(!isReject)
+    }
+    else {if(stepStatus.length>1){setStepStatus([...stepStatus.slice(0, -1)]);}}
+     
 
-    setStepStatus([...stepStatus.slice(0, -1)]);
+    
   };
+  const handleBtnReject=()=>{
+    setIsReject(!isReject)
+  }
   const handleOnclickBtnNextStep = () => {
     if (stepStatus.length == 2) {
       setIsShowModalSendTest(true);
     } else {
       if (stepStatus.length == 4) {
         setIsShowModalInviteInterview(true);
-      } else { if(stepStatus.length == 6){
-        setIsShowModalInviteInterview(true);
-      } else { let newStepStatus = [
-        ...stepStatus,
-        { step: Number(stepStatus.length - 1), createAt: new Date() },
-      ];
-      setStepStatus(newStepStatus);}
-       
+      } else {
+        if (stepStatus.length == 6) {
+          setIsShowModalInviteInterview(true);
+        } else {
+          let newStepStatus = [
+            ...stepStatus,
+            { step: Number(stepStatus.length - 1), createAt: new Date() },
+          ];
+          setStepStatus(newStepStatus);
+        }
       }
     }
   };
 
   return (
-    <div>
+    <div class="relative">
       <div
         className={` mx-4 relative overflow-x-auto border-[1.5px] rounded-lg min-w-[30%] min-h-[10%]`}
       >
@@ -101,7 +106,7 @@ const StatusProcess = () => {
                       : item.svg}
 
                     {item.idProcess == stepStatus.length - 1 ? (
-                      <div class="absolute z-1 left-0 top-0 w-6 h-6 bg-blue-200 rounded-full animate-ping"></div>
+                      <div class={`absolute z-[-1] left-0 top-0 w-6 h-6 bg-blue-200 rounded-full ${isReject?"":"animate-ping"}`}></div>
                     ) : (
                       ""
                     )}
@@ -140,7 +145,7 @@ const StatusProcess = () => {
                   >
                     {item.decr}
                   </p>
-                  {item.idProcess == 7 ? (
+                  {isReject? "" :item.idProcess == 7 ? (
                     ""
                   ) : item.idProcess == stepStatus.length - 1 ? (
                     <button
@@ -162,9 +167,10 @@ const StatusProcess = () => {
         <div class="flex justify-end">
           <button
             onClick={handleBtnUndo}
-            class="m-4 bg-blue-50 hover:bg-blue-300 text-gray-900 font-bold text-xs py-1 px-4 rounded-lg mt-3"
+            class=" z-[150] flex flex-col items-center bg-blue-50 hover:bg-blue-300  text-gray-900 font-bold text-xs mr-5 rounded-lg mt-3 w-[60px] h-[60px]"
           >
             <svg
+            class="h-11 w-11"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -185,11 +191,11 @@ const StatusProcess = () => {
                 ></path>{" "}
               </g>
             </svg>
-            Undo
+            {isReject? "Unreject":"Undo"}
           </button>
-          <button class=" m-4 ml-1 bg-blue-50 hover:bg-blue-300 text-gray-900 font-bold text-xs py-1 px-4 rounded-lg mt-3">
+          <button onClick={handleBtnReject} class={`${isReject? 'hidden' : ''} mr-3 mb-3 flex flex-col items-center bg-blue-50 hover:bg-blue-300 text-gray-900 font-bold text-xs  rounded-lg mt-3 w-[60px] h-[60px]`}>
             <svg
-              class="h-7 w-7 ml-1 mb-1 mt-1"
+              class="h-7 w-7 ml-1 mb-2 mt-2"
               viewBox="0 -0.5 17 17"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -237,6 +243,13 @@ const StatusProcess = () => {
         isNextStep={nextStepSendTest}
         isJobOffer={stepStatus}
       />
+      {isReject ? (
+        <div class="absolute flex flex-col justify-end items-center top-10 left-0 z-[110] bg-slate-300 opacity-60 mx-4 overflow-x-auto border-[1.5px] rounded-b-lg w-[calc(100%-2rem)] h-[calc(100%-2rem)] ">
+          <p class='bg-slate-50 p-5 mb-5 text-center text-orange-700 font-bold rounded-lg w-1/3 max-w-[300px] opacity-100'>This candidate was rejected !</p>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
