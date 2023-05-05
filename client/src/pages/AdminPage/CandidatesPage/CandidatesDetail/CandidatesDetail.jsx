@@ -160,7 +160,7 @@ const CandidatesDetail = () => {
         </div>
 
         <div className=" text-xs flex justify-around ">
-          <div className=" w-[40%]">
+          <div className=" w-[45%]">
             <div className=" text-base font-medium text-gray-400 pb-4 pt-2 ">
               EMPLOYEE DETAILS
             </div>
@@ -215,7 +215,7 @@ const CandidatesDetail = () => {
           </div>
 
           {/* <div className="text-center">hai</div> */}
-          <div className=" w-[40%]">
+          <div className=" w-[45%]">
             <div className=" text-base font-medium text-gray-400 pb-4 pt-2 ">
               DEPARTMENT
             </div>

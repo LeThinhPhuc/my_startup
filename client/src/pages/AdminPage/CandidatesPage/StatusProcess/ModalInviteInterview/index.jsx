@@ -18,7 +18,7 @@ const ModalInviteInterview = (props) => {
     dataMail,
   } = props;
   const {email,lastName
-  }  = dataMail?.personal ?? {}
+  }  = dataMail?.personal??{}
 
   const handleSubmit = (event) => {
     event.preventDefault();
