@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 
-
 const ModalInviteInterview = (props) => {
-//   // Khởi tạo state cho các trường form
+  //   // Khởi tạo state cho các trường form
   const [toEmail, setToEmail] = useState("nguyen.thanhtai@rocketmail.com");
   const [fromName, setFromName] = useState("");
   const [fromEmail, setFromEmail] = useState("");
@@ -11,16 +10,24 @@ const ModalInviteInterview = (props) => {
 
   const [field, setField] = useState(true);
 
-  const { isShowModalInviteInterview, isShow, isNextStep,isJobOffer } = props;
+  const {
+    isShowModalInviteInterview,
+    isShow,
+    isNextStep,
+    isJobOffer,
+    dataMail,
+  } = props;
+  const {email,lastName
+  }  = dataMail?.personal ?? {}
 
-  // Xử lý submit form
   const handleSubmit = (event) => {
     event.preventDefault();
     if (
       toEmail != "" &&
       fromName != "" &&
       fromEmail != "" &&
-      message != ""
+      message != "" &&
+      lastName != ""
     ) {
       setField(true);
       emailjs
@@ -28,8 +35,8 @@ const ModalInviteInterview = (props) => {
           "service_5wgh36p",
           "template_qzjkmv7",
           {
-            to_name: "tài",
-            to_email: toEmail,
+            to_name: lastName,
+            to_email: email,
             from_name: fromName,
             message: message,
             from_email: fromEmail,
@@ -40,32 +47,29 @@ const ModalInviteInterview = (props) => {
           (result) => {
             console.log(result.text);
             isNextStep(true);
-            // setToEmail('');
-    setFromName("");
-    setFromEmail("");
-    setMessage("");
+
+            setFromName("");
+            setFromEmail("");
+            setMessage("");
           },
           (error) => {
             console.log(error.text);
+            setField(false);
           }
         );
-        isShowModalInviteInterview(false);
+      isShowModalInviteInterview(false);
     } else {
       setField(false);
     }
     // Gửi email thông qua EmailJS
 
     // Reset lại các trường form sau khi gửi email
-   
-    
   };
   const handleClose = () => {
     isShowModalInviteInterview(false);
-    // setToEmail('');
-    // setFromName("");
-    // setFromEmail("");
-    // setMessage("");
-   
+    setFromName("");
+    setFromEmail("");
+    setMessage("");
   };
   return (
     <div
@@ -100,8 +104,9 @@ const ModalInviteInterview = (props) => {
         </button>
         <div class="px-6 py-6 lg:px-8">
           <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-            {isJobOffer.length==6? "Inviting candidate to accept the job":"Send an interview invitation email"}
-         {" "}
+            {isJobOffer.length == 6
+              ? "Inviting candidate to accept the job"
+              : "Send an interview invitation email"}{" "}
           </h3>
           <form class="space-y-4" action="#" novalidate>
             <div>
@@ -140,7 +145,6 @@ const ModalInviteInterview = (props) => {
               ></textarea>
             </div>
 
-           
             {field ? (
               ""
             ) : (

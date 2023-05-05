@@ -4,7 +4,7 @@ const StatusBadge = (props) => {
   const { status } = props;
   let textColor, bgColor;
   switch (status) {
-    case "APPLIED":
+    case "RECEIVED CV":
       textColor = "text-amber-500";
       bgColor = "bg-amber-100";
       break;      
@@ -12,15 +12,15 @@ const StatusBadge = (props) => {
       textColor = "text-emerald-500";
       bgColor = "bg-green-100";
       break;
-    case "TESTING":
+    case "DO A TEST":
       textColor = "text-cyan-600";
       bgColor = "bg-cyan-100";
       break;
-    case "TESTED":
+    case "DONE A TEST":
       textColor = "text-white";
       bgColor = "bg-cyan-500";
       break;
-    case "PASSED":
+    case "AWAITING INTERVIEW":
       textColor = "text-teal-500";
       bgColor = "bg-teal-100";
       break;
@@ -48,7 +48,7 @@ const StatusBadge = (props) => {
     <>
       {status ? (
         <mark
-          className={`px-3 py-2 font-semibold rounded-md ${textColor} ${bgColor}`}
+          className={`px-2 py-1 font-semibold rounded-md ${textColor} ${bgColor}`}
         >
           {status}
         </mark>

@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import { storage } from "../../../../../services/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 
 const ModalEmail = (props) => {
   // Khởi tạo state cho các trường form
-  const [toEmail, setToEmail] = useState("nguyen.thanhtai@rocketmail.com");
+
   const [fromName, setFromName] = useState("");
   const [fromEmail, setFromEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -13,17 +14,23 @@ const ModalEmail = (props) => {
   const [link, setLink] = useState("");
   const [field, setField] = useState(true);
 
-  const { isShowModalSendTest, isShow, isNextStep } = props;
+  const { isShowModalSendTest, isShow, isNextStep, dataMail } = props;
+  
+ 
+    const { email, lastName } = dataMail?.personal??{};
+   
 
   // Xử lý submit form
   const handleSubmit = (event) => {
     event.preventDefault();
+
     if (
       link != "" &&
-      toEmail != "" &&
+      email != "" &&
       fromName != "" &&
       fromEmail != "" &&
-      message != ""
+      message != "" &&
+      lastName != ""
     ) {
       setField(true);
       emailjs
@@ -31,8 +38,8 @@ const ModalEmail = (props) => {
           "service_5wgh36p",
           "template_ev9ul6c",
           {
-            to_name: "tài",
-            to_email: toEmail,
+            to_name: lastName,
+            to_email: email,
             from_name: fromName,
             message: message,
             link: link,
@@ -54,6 +61,7 @@ const ModalEmail = (props) => {
           },
           (error) => {
             console.log(error.text);
+            setField(true);
           }
         );
       isShowModalSendTest(false);
@@ -86,11 +94,6 @@ const ModalEmail = (props) => {
       setFile({});
     }
   }, [file]);
-  console.log(fromEmail);
-  console.log(fromName);
-  console.log(message);
-
-  console.log(link);
 
   return (
     <div

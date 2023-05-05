@@ -150,7 +150,7 @@ const renderData = [
   </svg>
       },
       {idProcess:2,
-        title:"WAITING CANDIDATE DONE A TEST",
+        title:"DO A TEST",
         decr:"Waiting a candidate sent back a test",
         button:"Pass a test",
         svg:<svg
@@ -444,7 +444,7 @@ const renderData = [
           </svg>
           },
           {idProcess:4,
-            title:"WAITING FOR INTERVIEW",
+            title:"AWAITING INTERVIEW",
             decr:"Waitting canndidate accept an interview ",
             button:"Candidate accept interview",
             svg: <svg

@@ -1,29 +1,15 @@
 import { Link } from "react-router-dom";
-
+import { useState } from "react";
 const Sidebar = () => {
   return (
-    <main className="flex flex-col justify-between h-[100vh] w-[200px] font-medium border-r-[1.5px]">
+    <main className="ml-2 flex flex-col justify-between h-[100vh] w-[200px] font-medium border-r-[1.5px]">
       <div>
         <div className="flex justify-between items-center border-b-[1.5px] h-[70px]">
           <img
             width="130"
             src="https://drive.google.com/u/0/uc?id=1JaIDwaSWsJ8oVqt0iufGk1PQAyIgMp16&export=download"
           ></img>
-          <div className="bg-slate-200 h-5 w-5 rounded-md p-[2px] mr-2">
-            <svg
-              className="stroke-[#00000031] stroke-[3px] w-4 h-4"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
-              />
-            </svg>
-          </div>
+          
         </div>
 
         <div className="pl-1 text-sm text-slate-500">

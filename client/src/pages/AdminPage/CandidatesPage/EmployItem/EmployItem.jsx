@@ -10,13 +10,15 @@ const EmployItem = (props) => {
   const bgColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   
   const { employee } = props;
-  const { personal, profile, experience, teamLead, _id, status, salary } =
+  const { personal, profile, teamLead, _id, salary,timeLine,isReject } =
     employee;
+   
   const { resumeLink } = profile;
   const currency = salary?salary?.replace(/\d/g, "")?.trim():"VND";
   const localeSalary = appService?.convertCurrency(Number(salary?salary?.replace(currency, ""):""), currency);
+ const statusList=["RECEIVED CV","APPROVED","DO A TEST","DONE A TEST","AWAITING INTERVIEW","INTERVIEW","OFFERING","ONBOARDING","REJECT"]
 
-  const onViewDetail = () => {
+ const onViewDetail = () => {
     navigate(`/admin/candidates/${_id}/edit`);
   };
 
@@ -60,7 +62,11 @@ const EmployItem = (props) => {
         <div className="text-xs ">{localeSalary}</div>
       </td>
       <td className="text-xs w-1/8 px-2 py-4">
-        <StatusBadge status={status}/>
+        <StatusBadge 
+        status={
+          isReject?statusList[8]:statusList[timeLine.length-1]
+        }
+        />
       </td>
       <td className="flex w-1/8 px-3 py-3 justify-center items-center gap-2">
         <Tooltip message="View Detail">
